@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <RadioGroup
+        android:id="@+id/radio_group_status"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:paddingHorizontal="10dp">
+
+        <TextView
+            android:id="@+id/tv_status_rg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/status"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+        <RadioButton
+            android:id="@+id/radio_btn_alive"
+            android:layout_width="wrap_content"
+            android:checked="true"
+            android:layout_height="wrap_content"
+            android:text="@string/alive" />
+
+        <RadioButton
+            android:id="@+id/radio_btn_dead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dead" />
+
+        <RadioButton
+            android:id="@+id/radio_btn_unknown_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/unknown" />
+    </RadioGroup>
+
+
+    <RadioGroup
+        android:id="@+id/radio_group_gender"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:paddingHorizontal="10dp">
+
+        <TextView
+            android:id="@+id/tv_gender_rg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/gender"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+        <RadioButton
+            android:id="@+id/radio_btn_male"
+            android:layout_width="wrap_content"
+            android:checked="true"
+            android:layout_height="wrap_content"
+            android:text="@string/male" />
+
+        <RadioButton
+            android:id="@+id/radio_btn_female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/female" />
+
+        <RadioButton
+            android:id="@+id/radio_btn_unknown_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/unknown" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/radio_group_race"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:paddingHorizontal="10dp">
+
+        <TextView
+            android:id="@+id/tv_race_rg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/species"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+        <RadioButton
+            android:id="@+id/radio_btn_human"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/human" />
+
+        <RadioButton
+            android:id="@+id/radio_btn_humanoid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/humanoid" />
+
+        <RadioButton
+            android:id="@+id/radio_btn_alien"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alien" />
+    </RadioGroup>
+
+
+</LinearLayout>

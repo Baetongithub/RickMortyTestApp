@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/viewPagerFragment">
+
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.example.rickmortytestapp.presentation.ui.fragments.view_pager2.ViewPagerFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_view_pager" />
+    <fragment
+        android:id="@+id/characterFragment"
+        android:name="com.example.rickmortytestapp.presentation.ui.fragments.characters.CharacterFragment"
+        android:label="Character" />
+    <fragment
+        android:id="@+id/episodeFragment"
+        android:name="com.example.rickmortytestapp.presentation.ui.fragments.episodes.EpisodeFragment"
+        android:label="Episode" />
+    <fragment
+        android:id="@+id/locationsFragment"
+        android:name="com.example.rickmortytestapp.presentation.ui.fragments.location.LocationsFragment"
+        android:label="Locations" />
+
+</navigation>
