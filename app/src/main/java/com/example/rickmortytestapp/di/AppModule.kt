@@ -1,13 +1,11 @@
 package com.example.rickmortytestapp.di
 
-import androidx.paging.ExperimentalPagingApi
 import com.example.rickmortytestapp.presentation.ui.fragments.characters.CharactersViewModel
 import com.example.rickmortytestapp.presentation.ui.fragments.episodes.EpisodesViewModel
 import com.example.rickmortytestapp.presentation.ui.fragments.location.LocationViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-@ExperimentalPagingApi
 val appModule = module {
     viewModel { CharactersViewModel(getCharactersUseCase = get(), searchCharacterUseCase = get()) }
     viewModel { LocationViewModel(getLocationUseCase = get(), searchLocationUseCase = get()) }

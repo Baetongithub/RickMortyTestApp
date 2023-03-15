@@ -2,7 +2,6 @@ package com.example.rickmortytestapp.presentation.ui.fragments.location
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.ExperimentalPagingApi
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.rickmortytestapp.domain.model.location.ResultLocation
@@ -10,7 +9,6 @@ import com.example.rickmortytestapp.domain.usecases.GetLocationUseCase
 import com.example.rickmortytestapp.domain.usecases.SearchLocationUseCase
 import kotlinx.coroutines.flow.Flow
 
-@ExperimentalPagingApi
 class LocationViewModel(
     private val getLocationUseCase: GetLocationUseCase,
     private val searchLocationUseCase: SearchLocationUseCase

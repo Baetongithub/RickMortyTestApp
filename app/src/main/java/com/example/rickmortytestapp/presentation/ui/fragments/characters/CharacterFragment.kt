@@ -12,7 +12,6 @@ import androidx.core.view.MenuProvider
 import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,15 +20,13 @@ import com.example.rickmortytestapp.R
 import com.example.rickmortytestapp.databinding.FragmentCharatcerBinding
 import com.example.rickmortytestapp.databinding.ItemDialogSearchBinding
 import com.example.rickmortytestapp.databinding.ItemFilterDialogBinding
-import com.example.rickmortytestapp.domain.model.character.ResultCharacter
+import com.example.rickmortytestapp.presentation.extensions.toast
 import com.example.rickmortytestapp.presentation.ui.base.BaseFragment
 import com.example.rickmortytestapp.presentation.ui.fragments.load_state.MyLoadStateAdapter
-import com.example.rickmortytestapp.presentation.utils.ext.toast
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@ExperimentalPagingApi
 class CharacterFragment :
     BaseFragment<FragmentCharatcerBinding>(FragmentCharatcerBinding::inflate) {
 
@@ -43,13 +40,11 @@ class CharacterFragment :
 
     override fun initView() {
         super.initView()
-
         setupRecyclerView()
     }
 
     override fun initViewModel() {
         super.initViewModel()
-
         getAllDefaultCharacters()
 
         val menuHost: MenuHost = requireActivity()
@@ -102,7 +97,6 @@ class CharacterFragment :
         val selectedGenderBtn = dialogBinding.radioGroupGender.checkedRadioButtonId
 
         if (selectedStatusBtn != -1 && selectedSpeciesBtn != -1 && selectedGenderBtn != -1) {
-
             val rbStatus: RadioButton =
                 dialogBinding.radioGroupStatus.findViewById(selectedStatusBtn)
             val rbSpecies: RadioButton =
@@ -147,7 +141,6 @@ class CharacterFragment :
                     isFiltered = true
                 }
         }
-
         dialog?.create()?.show()
     }
 
@@ -161,7 +154,6 @@ class CharacterFragment :
                     searchAndFilterCharacter(name = dialogVb?.etSearchByName?.text.toString())
                 }
         }
-
         dialog?.create()?.show()
     }
 
@@ -191,7 +183,7 @@ class CharacterFragment :
         btnRetry.setOnClickListener { rickMortyAdapter.retry() }
     }
 
-    private fun onItemClick(resultCharacter: ResultCharacter) {
+    private fun onItemClick(resultCharacter: com.example.rickmortytestapp.domain.model.character.ResultCharacter) {
         toast(resultCharacter.id.toString())
     }
 

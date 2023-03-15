@@ -13,10 +13,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.rickmortytestapp.R
 import com.example.rickmortytestapp.databinding.FragmentEpisodeBinding
 import com.example.rickmortytestapp.databinding.ItemDialogSearchBinding
-import com.example.rickmortytestapp.domain.model.episodes.ResultEpisode
+import com.example.rickmortytestapp.presentation.extensions.toast
 import com.example.rickmortytestapp.presentation.ui.base.BaseFragment
 import com.example.rickmortytestapp.presentation.ui.fragments.load_state.MyLoadStateAdapter
-import com.example.rickmortytestapp.presentation.utils.ext.toast
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -36,7 +35,6 @@ class EpisodeFragment : BaseFragment<FragmentEpisodeBinding>(FragmentEpisodeBind
 
     override fun initViewModel() {
         super.initViewModel()
-
         observeGetDefaultEpisodes()
         searchEpisodeInDialog()
     }
@@ -58,20 +56,20 @@ class EpisodeFragment : BaseFragment<FragmentEpisodeBinding>(FragmentEpisodeBind
                     else -> false
                 }
             }
-
-            private fun showSearchDialog() {
-                val dialogVb = activity?.layoutInflater?.let { ItemDialogSearchBinding.inflate(it) }
-
-                val dialog = context?.let {
-                    AlertDialog.Builder(it)
-                        .setView(dialogVb?.root)
-                        .setPositiveButton(getString(R.string.search)) { _, _ ->
-                            observeSearchEpisode(dialogVb?.etSearchByName?.text.toString())
-                        }
-                }
-                dialog?.create()?.show()
-            }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+    }
+
+    private fun showSearchDialog() {
+        val dialogVb = activity?.layoutInflater?.let { ItemDialogSearchBinding.inflate(it) }
+
+        val dialog = context?.let {
+            AlertDialog.Builder(it)
+                .setView(dialogVb?.root)
+                .setPositiveButton(getString(R.string.search)) { _, _ ->
+                    observeSearchEpisode(dialogVb?.etSearchByName?.text.toString())
+                }
+        }
+        dialog?.create()?.show()
     }
 
     private fun observeGetDefaultEpisodes() {
@@ -99,7 +97,7 @@ class EpisodeFragment : BaseFragment<FragmentEpisodeBinding>(FragmentEpisodeBind
         centralizeRetryButton()
     }
 
-    private fun onItemClick(resultEpisode: ResultEpisode) {
+    private fun onItemClick(resultEpisode: com.example.rickmortytestapp.domain.model.episodes.ResultEpisode) {
         toast(resultEpisode.id.toString())
     }
 

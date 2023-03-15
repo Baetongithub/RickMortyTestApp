@@ -1,6 +1,5 @@
 package com.example.rickmortytestapp.presentation.ui.base
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,19 +25,12 @@ abstract class BaseFragment<VB : ViewBinding>(
 
         initView()
         initViewModel()
-//        initCheckInternet()
+        initCheckInternet()
         return vb.root
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        initCheckInternet()
-    }
-
     protected open fun initCheckInternet(){}
-
     protected open fun initViewModel(){}
-
     protected open fun initView(){}
 
     override fun onDestroyView() {

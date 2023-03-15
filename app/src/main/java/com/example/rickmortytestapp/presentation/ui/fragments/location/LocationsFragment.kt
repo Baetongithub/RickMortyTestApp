@@ -8,20 +8,17 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.rickmortytestapp.R
 import com.example.rickmortytestapp.databinding.FragmentLocationBinding
 import com.example.rickmortytestapp.databinding.ItemDialogSearchBinding
-import com.example.rickmortytestapp.domain.model.location.ResultLocation
+import com.example.rickmortytestapp.presentation.extensions.toast
 import com.example.rickmortytestapp.presentation.ui.base.BaseFragment
 import com.example.rickmortytestapp.presentation.ui.fragments.load_state.MyLoadStateAdapter
-import com.example.rickmortytestapp.presentation.utils.ext.toast
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@ExperimentalPagingApi
 class LocationsFragment : BaseFragment<FragmentLocationBinding>(FragmentLocationBinding::inflate) {
 
     private val viewModel: LocationViewModel by viewModel()
@@ -37,7 +34,6 @@ class LocationsFragment : BaseFragment<FragmentLocationBinding>(FragmentLocation
 
     override fun initViewModel() {
         super.initViewModel()
-
         observeGetDefaultLocations()
         searchLocationInDialog()
     }
@@ -59,24 +55,20 @@ class LocationsFragment : BaseFragment<FragmentLocationBinding>(FragmentLocation
                     else -> false
                 }
             }
-
-            private fun showSearchDialog() {
-                val searchBinding = activity?.layoutInflater?.let { ItemDialogSearchBinding.inflate(it) }
-
-                val dialog = context?.let {
-                    AlertDialog.Builder(it)
-                        .setView(searchBinding?.root)
-                        .setPositiveButton(getString(R.string.search)) { _, _ ->
-                            observeSearchLocation(searchBinding?.etSearchByName?.text.toString())
-                        }
-                }
-
-                if (dialog != null) {
-                    dialog.create()
-                    dialog.show()
-                }
-            }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+    }
+
+    private fun showSearchDialog() {
+        val searchBinding = activity?.layoutInflater?.let { ItemDialogSearchBinding.inflate(it) }
+
+        val dialog = context?.let {
+            AlertDialog.Builder(it)
+                .setView(searchBinding?.root)
+                .setPositiveButton(getString(R.string.search)) { _, _ ->
+                    observeSearchLocation(searchBinding?.etSearchByName?.text.toString())
+                }
+        }
+        dialog?.create()?.show()
     }
 
     private fun observeGetDefaultLocations() {
@@ -103,7 +95,7 @@ class LocationsFragment : BaseFragment<FragmentLocationBinding>(FragmentLocation
         centralizeRetryButton()
     }
 
-    private fun onItemClick(result: ResultLocation) {
+    private fun onItemClick(result: com.example.rickmortytestapp.domain.model.location.ResultLocation) {
         toast(result.id.toString())
     }
 

@@ -1,7 +1,6 @@
 package com.example.rickmortytestapp.presentation.ui.fragments.view_pager2
 
 import androidx.core.view.isGone
-import androidx.paging.ExperimentalPagingApi
 import com.example.rickmortytestapp.R
 import com.example.rickmortytestapp.databinding.FragmentViewPagerBinding
 import com.example.rickmortytestapp.presentation.ui.base.BaseFragment
@@ -11,13 +10,11 @@ import com.example.rickmortytestapp.presentation.ui.fragments.location.Locations
 import com.example.rickmortytestapp.presentation.utils.network_helper.CheckInternet
 import com.google.android.material.tabs.TabLayoutMediator
 
-@ExperimentalPagingApi
 class ViewPagerFragment :
     BaseFragment<FragmentViewPagerBinding>(FragmentViewPagerBinding::inflate) {
 
     override fun initView() {
         super.initView()
-
         setupVPAdapter()
         setupTabLayout()
     }
@@ -36,7 +33,6 @@ class ViewPagerFragment :
         vpAdapter.fragmentList.addAll(fragmentList)
         vb.viewPager.apply {
             adapter = vpAdapter
-            isUserInputEnabled = false
         }
     }
 

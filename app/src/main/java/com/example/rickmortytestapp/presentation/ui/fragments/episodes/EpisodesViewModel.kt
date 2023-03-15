@@ -21,7 +21,6 @@ class EpisodesViewModel(
         if (lastResult != null) {
             return lastResult
         }
-
         val result = searchEpisodeUseCase.searchEpisode(name)
             .cachedIn(viewModelScope)
         _result = result

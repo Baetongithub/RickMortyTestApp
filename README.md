@@ -1,6 +1,7 @@
 ## Тестовое задание на позицию Intern Android Developer
 
-#Требования по используемым технологиям:
+# Требования по используемым технологиям:
+
 • Kotlin + Kotlin code style
 • Single Activity + Clean Architecture + MVVM
 • Koin
